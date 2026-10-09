@@ -111,7 +111,6 @@ export function evaluateBatch(a: BatchAnalysis, batches: InventoryBatch[], setti
   const tViol: string[] = [];
   if (t.short <= 0) tViol.push(`No shortage at ${storeName(t.s.id, settings)}`);
   if (shelfAtArrival < settings.minShelfForTransfer) tViol.push(`Shelf life at arrival ${shelfAtArrival.toFixed(1)}d < min ${settings.minShelfForTransfer}d`);
-  if (unsold > settings.maxTransferCapacity && tQty === settings.maxTransferCapacity) tViol.length === 0 && null;
   const tCost = tQty * settings.transferCostPerUnit;
   const tWaste = unsold - tQty;
   proposals.push({
@@ -138,7 +137,7 @@ export function evaluateBatch(a: BatchAnalysis, batches: InventoryBatch[], setti
   const dQty = partner ? Math.min(unsold, partner.capacity) : 0;
   proposals.push({
     id: "donate", agent: "rescue", action: "donate", feasible: dViol.length === 0 && dQty > 0, violations: dViol,
-    projectedWaste: unsold - dQty, projectedMargin: baseMargin + wasteVal(0) , cost: dQty * 1,
+    projectedWaste: unsold - dQty, projectedMargin: baseMargin, cost: dQty * 1,
     availability: 100, note: partner ? `Offer ${dQty} units to ${partner.name} (fictional partner).` : "No eligible partner.",
   });
 
