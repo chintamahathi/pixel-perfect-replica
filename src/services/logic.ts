@@ -1,4 +1,4 @@
-// Deterministic business rules used by the demo. Replace with API calls in services/api.ts later.
+// Deterministic business rules used for local demo mode. Can be integrated with FastAPI services/api layer later.
 import { PARTNERS, PRODUCTS, STORES, baseDemand, route } from "@/data/seed";
 import type {
   ActionType, AgentProposal, InventoryBatch, Product, Recommendation, RiskLevel, Settings, StoreId,
