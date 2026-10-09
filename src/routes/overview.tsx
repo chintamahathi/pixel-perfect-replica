@@ -128,7 +128,6 @@ function Overview() {
                 <YAxis tick={{ fontSize: 11 }} stroke="var(--muted-foreground)" />
                 <Tooltip contentStyle={tooltipStyle} /><Legend wrapperStyle={{ fontSize: 12 }} />
                 <Area type="monotone" dataKey="actual" name="Actual sales" stroke="var(--chart-1)" fill="url(#ga)" strokeWidth={2} />
-                <Line type="monotone" dataKey="forecast" name="Forecast" stroke="var(--chart-4)" strokeDasharray="5 4" dot={false} />
                 <Area type="monotone" dataKey="forecast" name="Forecast" stroke="var(--chart-4)" strokeDasharray="5 4" fill="none" />
               </AreaChart>
             </ResponsiveContainer>
