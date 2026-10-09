@@ -10,13 +10,34 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ActivityRouteImport } from './routes/activity'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as CrisisArenaRouteImport } from './routes/crisis-arena'
 import { Route as DecisionRoomRouteImport } from './routes/decision-room'
+import { Route as FoodRescueRouteImport } from './routes/food-rescue'
 import { Route as InventoryRouteImport } from './routes/inventory'
+import { Route as NetworkRouteImport } from './routes/network'
 import { Route as OverviewRouteImport } from './routes/overview'
+import { Route as SettingsRouteImport } from './routes/settings'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ActivityRoute = ActivityRouteImport.update({
+  id: '/activity',
+  path: '/activity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrisisArenaRoute = CrisisArenaRouteImport.update({
+  id: '/crisis-arena',
+  path: '/crisis-arena',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DecisionRoomRoute = DecisionRoomRouteImport.update({
@@ -24,9 +45,19 @@ const DecisionRoomRoute = DecisionRoomRouteImport.update({
   path: '/decision-room',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FoodRescueRoute = FoodRescueRouteImport.update({
+  id: '/food-rescue',
+  path: '/food-rescue',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InventoryRoute = InventoryRouteImport.update({
   id: '/inventory',
   path: '/inventory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NetworkRoute = NetworkRouteImport.update({
+  id: '/network',
+  path: '/network',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OverviewRoute = OverviewRouteImport.update({
@@ -34,39 +65,99 @@ const OverviewRoute = OverviewRouteImport.update({
   path: '/overview',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
+  '/analytics': typeof AnalyticsRoute
+  '/crisis-arena': typeof CrisisArenaRoute
   '/decision-room': typeof DecisionRoomRoute
+  '/food-rescue': typeof FoodRescueRoute
   '/inventory': typeof InventoryRoute
+  '/network': typeof NetworkRoute
   '/overview': typeof OverviewRoute
+  '/settings': typeof SettingsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
+  '/analytics': typeof AnalyticsRoute
+  '/crisis-arena': typeof CrisisArenaRoute
   '/decision-room': typeof DecisionRoomRoute
+  '/food-rescue': typeof FoodRescueRoute
   '/inventory': typeof InventoryRoute
+  '/network': typeof NetworkRoute
   '/overview': typeof OverviewRoute
+  '/settings': typeof SettingsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/activity': typeof ActivityRoute
+  '/analytics': typeof AnalyticsRoute
+  '/crisis-arena': typeof CrisisArenaRoute
   '/decision-room': typeof DecisionRoomRoute
+  '/food-rescue': typeof FoodRescueRoute
   '/inventory': typeof InventoryRoute
+  '/network': typeof NetworkRoute
   '/overview': typeof OverviewRoute
+  '/settings': typeof SettingsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/decision-room' | '/inventory' | '/overview'
+  fullPaths:
+    | '/'
+    | '/activity'
+    | '/analytics'
+    | '/crisis-arena'
+    | '/decision-room'
+    | '/food-rescue'
+    | '/inventory'
+    | '/network'
+    | '/overview'
+    | '/settings'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/decision-room' | '/inventory' | '/overview'
-  id: '__root__' | '/' | '/decision-room' | '/inventory' | '/overview'
+  to:
+    | '/'
+    | '/activity'
+    | '/analytics'
+    | '/crisis-arena'
+    | '/decision-room'
+    | '/food-rescue'
+    | '/inventory'
+    | '/network'
+    | '/overview'
+    | '/settings'
+  id:
+    | '__root__'
+    | '/'
+    | '/activity'
+    | '/analytics'
+    | '/crisis-arena'
+    | '/decision-room'
+    | '/food-rescue'
+    | '/inventory'
+    | '/network'
+    | '/overview'
+    | '/settings'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ActivityRoute: typeof ActivityRoute
+  AnalyticsRoute: typeof AnalyticsRoute
+  CrisisArenaRoute: typeof CrisisArenaRoute
   DecisionRoomRoute: typeof DecisionRoomRoute
+  FoodRescueRoute: typeof FoodRescueRoute
   InventoryRoute: typeof InventoryRoute
+  NetworkRoute: typeof NetworkRoute
   OverviewRoute: typeof OverviewRoute
+  SettingsRoute: typeof SettingsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -78,11 +169,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/activity': {
+      id: '/activity'
+      path: '/activity'
+      fullPath: '/activity'
+      preLoaderRoute: typeof ActivityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crisis-arena': {
+      id: '/crisis-arena'
+      path: '/crisis-arena'
+      fullPath: '/crisis-arena'
+      preLoaderRoute: typeof CrisisArenaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/decision-room': {
       id: '/decision-room'
       path: '/decision-room'
       fullPath: '/decision-room'
       preLoaderRoute: typeof DecisionRoomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/food-rescue': {
+      id: '/food-rescue'
+      path: '/food-rescue'
+      fullPath: '/food-rescue'
+      preLoaderRoute: typeof FoodRescueRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/inventory': {
@@ -92,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InventoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/network': {
+      id: '/network'
+      path: '/network'
+      fullPath: '/network'
+      preLoaderRoute: typeof NetworkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/overview': {
       id: '/overview'
       path: '/overview'
@@ -99,14 +225,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OverviewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ActivityRoute: ActivityRoute,
+  AnalyticsRoute: AnalyticsRoute,
+  CrisisArenaRoute: CrisisArenaRoute,
   DecisionRoomRoute: DecisionRoomRoute,
+  FoodRescueRoute: FoodRescueRoute,
   InventoryRoute: InventoryRoute,
+  NetworkRoute: NetworkRoute,
   OverviewRoute: OverviewRoute,
+  SettingsRoute: SettingsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
