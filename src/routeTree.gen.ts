@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DecisionRoomRouteImport } from './routes/decision-room'
 import { Route as InventoryRouteImport } from './routes/inventory'
 import { Route as OverviewRouteImport } from './routes/overview'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DecisionRoomRoute = DecisionRoomRouteImport.update({
+  id: '/decision-room',
+  path: '/decision-room',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InventoryRoute = InventoryRouteImport.update({
@@ -31,30 +37,34 @@ const OverviewRoute = OverviewRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/decision-room': typeof DecisionRoomRoute
   '/inventory': typeof InventoryRoute
   '/overview': typeof OverviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/decision-room': typeof DecisionRoomRoute
   '/inventory': typeof InventoryRoute
   '/overview': typeof OverviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/decision-room': typeof DecisionRoomRoute
   '/inventory': typeof InventoryRoute
   '/overview': typeof OverviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/inventory' | '/overview'
+  fullPaths: '/' | '/decision-room' | '/inventory' | '/overview'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/inventory' | '/overview'
-  id: '__root__' | '/' | '/inventory' | '/overview'
+  to: '/' | '/decision-room' | '/inventory' | '/overview'
+  id: '__root__' | '/' | '/decision-room' | '/inventory' | '/overview'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DecisionRoomRoute: typeof DecisionRoomRoute
   InventoryRoute: typeof InventoryRoute
   OverviewRoute: typeof OverviewRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/decision-room': {
+      id: '/decision-room'
+      path: '/decision-room'
+      fullPath: '/decision-room'
+      preLoaderRoute: typeof DecisionRoomRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/inventory': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DecisionRoomRoute: DecisionRoomRoute,
   InventoryRoute: InventoryRoute,
   OverviewRoute: OverviewRoute,
 }
